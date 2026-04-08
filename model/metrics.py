@@ -8,15 +8,40 @@ import matplotlib.pyplot as plt
 
 # Here is a loss function for linear regression
 def MSE(y,y_pred):
-     
-	return np.mean((y_pred -y)**2)
+    '''
+    Mean Squared Error Loss
+    '''
+    return mean_squared_error(y,y_pred)
 
 def MAE(y, y_pred):
     '''
     Mean Absolute Error Loss
     '''
-    # TODO
-    pass
+    return mean_absolute_error(y,y_pred)
+
+def RMSE(y,y_pred):
+    '''
+    Root Mean Squared Error Loss
+    '''
+    return np.sqrt(mean_squared_error(y,y_pred))
+
+def R_squared(y,y_pred):
+    '''
+    R-squared score
+    '''
+    return r2_score(y,y_pred)
+
+def accuracy(y,y_pred):
+    return accuracy_score(y,y_pred)
+    
+def precision(y,y_pred):
+    return precision_score(y,y_pred)
+
+def recall(y,y_pred):
+    return recall_score(y,y_pred)
+
+def f1(y,y_pred):
+    return f1_score(y,y_pred)
 
 # Here is a loss function for logistic regression
 def logloss(y,y_pred):
@@ -35,10 +60,10 @@ def evaluate_linear_regression(y_true, y_pred, title='Linear Regression Evaluati
 
     # TODO 
     metrics = {
-        'MSE': 'TODO: use sklearn.metrics to compute MSE',
-        'MAE': 'TODO: use sklearn.metrics to compute MAE',
-        'RMSE': 'TODO: use sklearn.metrics and numpy to compute RMSE',
-        'R-squared': 'TODO: use sklearn.metrics to compute R-squared',
+        'MSE': MSE(y_true,y_pred),
+        'MAE': MAE(y_true,y_pred),
+        'RMSE': RMSE(y_true,y_pred),
+        'R-squared': R_squared(y_true,y_pred),
     }
 
     print(f"=== {title} ===")
@@ -54,10 +79,10 @@ def evaluate_binary_classifier(y_true, y_pred, title='Model Evaluation'):
 
     # TODO 
     metrics = {
-        'Accuracy': 'TODO: use sklearn.metrics to compute accuracy',
-        'Precision': 'TODO: use sklearn.metrics to compute Precision',
-        'Recall': 'TODO: use sklearn.metrics to compute Recall',
-        'F1-score': 'TODO: use sklearn.metrics to compute F1-score'
+        'Accuracy': accuracy(y_true,y_pred),
+        'Precision': precision(y_true,y_pred),
+        'Recall': recall(y_true,y_pred),
+        'F1-score': f1(y_true,y_pred)
     }
 
     print(title)
